@@ -11,6 +11,10 @@ Creating a cluster:
 
 `pcluster create-cluster -c ~/cluster-config.yaml -n MyCluster01`
 
+Check status/IP address of cluster
+
+`pcluster describe-cluster -n MyCluster01`
+
 Listing down all clusters:
 
 `pcluster list-clusters`
@@ -25,8 +29,25 @@ Taking a snapshot:
 
 Checking snapshot status:
 
-`aws ec2 describe-snapshots --owner-ids self --query 'Snapshots[]`
+`aws ec2 describe-snapshots --owner-ids self --query 'Snapshots[]'`
 
 Deleting a cluster:
 
 `pcluster delete-cluster -n MyCluster01`
+
+### EC2 Shell
+Activate conda:
+
+`miniconda3/bin/conda init`
+
+Reload bash:
+
+`source ~/.bashrc`
+
+Activate env1:
+
+`conda activate env1`
+
+Copy AWS credentials:
+
+`cp -r /data/aws ~/.aws`
