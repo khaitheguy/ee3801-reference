@@ -9,7 +9,9 @@ Edit the cluster configuration:
 
 Creating a cluster:
 
-`pcluster create-cluster -c ~/cluster-config.yaml -n MyCluster01`
+```bash
+pcluster create-cluster -c ~/cluster-config.yaml -n MyCluster01
+```
 
 Check status/IP address of cluster
 
@@ -51,3 +53,10 @@ Activate env1:
 Copy AWS credentials:
 
 `cp -r /data/aws ~/.aws`
+
+## General
+### Useful keyboard shortcuts
+- `Ctrl+L` Clear terminal
+- `Ctrl+D` Exit
+- `Ctrl+C` Interrupt command
+- `Tab` Autocomplete filename
