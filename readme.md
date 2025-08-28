@@ -5,7 +5,9 @@
 ### ParallelCluster
 Edit the cluster configuration:
 
-`nano ~/cluster-config.yaml`
+```bash
+nano ~/cluster-config.yaml
+```
 
 Creating a cluster:
 
@@ -15,44 +17,64 @@ pcluster create-cluster -c ~/cluster-config.yaml -n MyCluster01
 
 Check status/IP address of cluster
 
-`pcluster describe-cluster -n MyCluster01`
+```bash
+pcluster describe-cluster -n MyCluster01
+```
 
 Listing down all clusters:
 
-`pcluster list-clusters`
+```bash
+pcluster list-clusters
+```
 
 Logging into a cluster using SSH:
 
-`pcluster ssh -i ~/MyKeyPair.pem -n MyCluster01`
+```bash
+pcluster ssh -i ~/MyKeyPair.pem -n MyCluster01
+```
 
 Taking a snapshot:
 
-`update_snapshot.sh data 2 MyCluster01`
+```bash
+update_snapshot.sh data 2 MyCluster01
+```
 
 Checking snapshot status:
 
-`aws ec2 describe-snapshots --owner-ids self --query 'Snapshots[]'`
+```bash
+aws ec2 describe-snapshots --owner-ids self --query 'Snapshots[]'
+```
 
 Deleting a cluster:
 
-`pcluster delete-cluster -n MyCluster01`
+```bash
+pcluster delete-cluster -n MyCluster01
+```
 
 ### EC2 Shell
 Activate conda:
 
-`miniconda3/bin/conda init`
+```bash
+miniconda3/bin/conda init
+```
 
 Reload bash:
 
-`source ~/.bashrc`
+```bash
+source ~/.bashrc
+```
 
 Activate env1:
 
-`conda activate env1`
+```bash
+conda activate env1
+```
 
 Copy AWS credentials:
 
-`cp -r /data/aws ~/.aws`
+```bash
+cp -r /data/aws ~/.aws
+```
 
 ## General
 ### Useful keyboard shortcuts
