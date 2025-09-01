@@ -76,8 +76,29 @@ Copy AWS credentials:
 cp -r /data/aws ~/.aws
 ```
 
+Submit job:
+```bash
+sbatch file.sh
+```
+
+Check job queue:
+```bash
+squeue
+```
+
+Cancel all jobs:
+```bash
+scancel --user=ec2-user
+```
+
+Run on compute node:
+```bash
+srun --pty /bin/bash
+```
+
 ## General
 ### Useful keyboard shortcuts
+- `Ctrl+R` Reverse search
 - `Ctrl+L` Clear terminal
 - `Ctrl+D` Exit
 - `Ctrl+C` Interrupt command
