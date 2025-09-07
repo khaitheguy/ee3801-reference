@@ -1,8 +1,6 @@
 # EE3801 Reference Sheet
 
-## AWS Commands
-
-### ParallelCluster
+## ParallelCluster
 Edit the cluster configuration:
 
 ```bash
@@ -51,11 +49,11 @@ Deleting a cluster:
 pcluster delete-cluster -n MyCluster01
 ```
 
-### EC2 Shell
+## EC2 Shell
 Activate conda:
 
 ```bash
-miniconda3/bin/conda init
+/data/miniconda3/bin/conda init
 ```
 
 Reload bash:
@@ -76,6 +74,16 @@ Copy AWS credentials:
 cp -r /data/aws ~/.aws
 ```
 
+Configure Git:
+
+```bash
+git config --global core.editor "nano"
+git config --global user.name "[Name]"
+git config --global user.email "[Email]"
+```
+
+## Slurm Commands
+
 Submit job:
 ```bash
 sbatch file.sh
@@ -94,6 +102,17 @@ scancel --user=ec2-user
 Run on compute node:
 ```bash
 srun --pty /bin/bash
+```
+
+## Misc
+Publish a notification through SNS:
+```bash
+aws sns publish --topic-arn arn:aws:sns:ap-southeast-1:123456789012:awsnotify --message "Message"
+```
+
+Fix for Node.js:
+```bash
+nvm install 16.9.1
 ```
 
 ## General
