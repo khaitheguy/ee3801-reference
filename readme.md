@@ -34,7 +34,7 @@ pcluster ssh -i ~/MyKeyPair.pem -n MyCluster01
 Taking a snapshot:
 
 ```bash
-update_snapshot.sh data 2 MyCluster01
+./update_snapshot.sh data 2 MyCluster01
 ```
 
 Checking snapshot status:
