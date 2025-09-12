@@ -74,6 +74,12 @@ Copy AWS credentials:
 cp -r /data/aws ~/.aws
 ```
 
+**Do all the above using my custom script:**
+
+```bash
+source /data/src/PyHipp/auto.sh
+```
+
 Configure Git:
 
 ```bash
@@ -116,6 +122,22 @@ nvm install 16.9.1
 ```
 
 ## General
+### Bash Commands
+Search through current directory for filename
+```bash
+find . -name "channel*"
+```
+
+Sort output of a command, then save results to a file
+```bash
+find . -name "channel*" | sort > results1.txt
+```
+
+Filter output for specific keyword
+```bash
+find . -name "channel*" | grep -v -e eye -e mountain
+```
+
 ### Useful keyboard shortcuts
 - `Ctrl+R` Reverse search
 - `Ctrl+L` Clear terminal
