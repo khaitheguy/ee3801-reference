@@ -123,6 +123,11 @@ kill -9 12958 # process-id, the 2nd number
 [Back to Top](#quick-reference)
 
 ## Git commands
+Clone repo:
+```bash
+https://github.com/khaitheguy/PyHipp.git
+```
+
 Configure Git:
 ```bash
 git config --global core.editor "nano"
