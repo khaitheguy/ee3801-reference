@@ -4,7 +4,8 @@
 1. [Create cluster](#parallelcluster)
 2. [Set up conda env](#ec2-shell)
 3. [Manage slurm jobs](#slurm-commands)
-4. [Bash commands](#bash-commands)
+4. [Check for missing files](#bash-commands)
+5. [Lab links](#links-to-labs)
 
 ## ParallelCluster
 Edit the cluster configuration:
@@ -54,7 +55,6 @@ Deleting a cluster:
 ```bash
 pcluster delete-cluster -n MyCluster01
 ```
-[Back to Top](#quick-reference)
 
 Update compute nodes on the fly:
 
@@ -64,7 +64,7 @@ pcluster update-compute-fleet --status STOP_REQUESTED -n MyCluster01
 ```bash
 pcluster update-cluster -c ~/cluster-config.yaml -n MyCluster01
 ```
-
+[Back to Top](#quick-reference)
 ## EC2 Shell
 Activate conda:
 
@@ -101,7 +101,7 @@ Configure AWS:
 aws configure
 ```
 - Select options
-```bash
+```
 AWS Access Key ID [None]:
 AWS Secret Access Key [None]:
 Default region name [None]: ap-southeast-1
@@ -120,15 +120,49 @@ ps -ef | grep ipython
 ```bash
 kill -9 12958 # process-id, the 2nd number
 ```
+[Back to Top](#quick-reference)
 
+## Git commands
 Configure Git:
-
 ```bash
 git config --global core.editor "nano"
 git config --global user.name "[Name]"
 git config --global user.email "[Email]"
 ```
+
+Check upstream repo:
+```bash
+git remote -v
+```
+- Expected result
+```
+origin		https://github.com/yourusername/PyHipp.git (fetch)
+origin		https://github.com/yourusername/PyHipp.git (push)
+upstream	https://github.com/shihchengyen/PyHipp.git (fetch)
+upstream	https://github.com/shihchengyen/PyHipp.git (push)
+```
+
+Set upstream repo:
+```bash
+git remote add upstream https://github.com/shihchengyen/PyHipp.git
+```
+
+*If accidentally cloned wrong repo*
+```bash
+git remote set-url origin https://github.com/yourusername/PyHipp.git
+```
 [Back to Top](#quick-reference)
+
+Merge with upstream changes:
+```bash
+git fetch upstream
+```
+```bash
+git checkout main
+```
+```bash
+git merge upstream/main
+```
 
 ## Slurm Commands
 
@@ -137,23 +171,28 @@ Submit job:
 sbatch file.sh
 ```
 
+- *With dependencies*
+```bash
+sbatch --dependency=afterok:12:13:14:15:16 /data/src/PyHipp/consol_jobs.sh
+```
+
 Check job queue:
 ```bash
 squeue
 ```
 
 Cancel jobs:
-- 1 job
+- *1 job*
 ```bash
 scancel 2
 ```
 
-- Multiple jobs
+- *Multiple jobs*
 ```bash
 scancel {2,3,4}
 ```
 
-- All jobs
+- *All jobs*
 ```bash
 scancel --user=ec2-user
 ```
@@ -206,3 +245,10 @@ find . -name "channel*" | grep -v -e eye -e mountain
 - `Ctrl+D` Exit
 - `Ctrl+C` Interrupt command
 - `Tab` Autocomplete filename
+
+## Links to labs
+- [Lab 1](https://ee3801.github.io/Lab1)
+- [Lab 2](https://ee3801.github.io/Lab2)
+- [Lab 3](https://ee3801.github.io/Lab3)
+- [Lab 4](https://ee3801.github.io/Lab4)
+- [Lab 5](https://ee3801.github.io/Lab5)
