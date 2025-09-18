@@ -1,5 +1,11 @@
 # EE3801 Reference Sheet
 
+## Quick Reference
+1. [Create cluster](#parallelcluster)
+2. [Set up conda env](#ec2-shell)
+3. [Slurm commands](#slurm-commands)
+4. [Bash commands](#bash-commands)
+
 ## ParallelCluster
 Edit the cluster configuration:
 
@@ -48,6 +54,7 @@ Deleting a cluster:
 ```bash
 pcluster delete-cluster -n MyCluster01
 ```
+[Back to Top](#quick-reference)
 
 ## EC2 Shell
 Activate conda:
@@ -87,6 +94,7 @@ git config --global core.editor "nano"
 git config --global user.name "[Name]"
 git config --global user.email "[Email]"
 ```
+[Back to Top](#quick-reference)
 
 ## Slurm Commands
 
@@ -110,6 +118,8 @@ Run on compute node:
 srun --pty /bin/bash
 ```
 
+[Back to Top](#quick-reference)
+
 ## Misc
 Publish a notification through SNS:
 ```bash
@@ -120,6 +130,7 @@ Fix for Node.js:
 ```bash
 nvm install 16.9.1
 ```
+[Back to Top](#quick-reference)
 
 ## General
 ### Bash Commands
@@ -137,6 +148,7 @@ Filter output for specific keyword
 ```bash
 find . -name "channel*" | grep -v -e eye -e mountain
 ```
+[Back to Top](#quick-reference)
 
 ### Useful keyboard shortcuts
 - `Ctrl+R` Reverse search
