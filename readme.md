@@ -223,20 +223,42 @@ Copy file over SSH:
 scp -i ~/MyKeyPair.pem ~/EE3801/PyHipp/slurm.sh ec2-user@xxx:/data/submit.sh
 ```
 
-Search through current directory for filename
+Regenerate missing `.hkl` files:
+1. Get all channels
 ```bash
-find . -name "channel*"
+find . -name "channel*" | grep -v -e eye -e mountain | sort > chs.txt
+```
+2. Get generated channels
+```bash
+find . -name "rplhighpass*hkl" | grep -v -e eye | sort | cut -d "/" -f 1-4 > hps.txt
+```
+3. Get missing channels
+```bash
+comm -23 chs.txt hps.txt
+```
+4. Generate missing channels
+```bash
+cwd=`pwd`; for i in `comm -23 chs.txt hps.txt`; do echo $i; cd $i; sbatch /data/src/PyHipp/rplhighpass-sort-slurm.sh; cd $cwd; done
 ```
 
-Sort output of a command, then save results to a file
+Regenerate `firings.mda` files:
+1. Get all channels
 ```bash
-find . -name "channel*" | sort > results1.txt
+find . -name "channel*" | grep -v -e eye -e mountain | sort
+```
+2. Get generated channels
+```bash
+find mountains -name "firings.mda" | sort
+```
+3. Cut both outputs such that only channel dir remains
+4. Use `comm` to extract missing channels
+5. Use same for loop as above to regenerate files
+
+Get full path of file:
+```bash
+find . -name "firings.mda" | xargs realpath
 ```
 
-Filter output for specific keyword
-```bash
-find . -name "channel*" | grep -v -e eye -e mountain
-```
 [Back to Top](#quick-reference)
 
 ### Useful keyboard shortcuts
