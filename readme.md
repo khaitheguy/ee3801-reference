@@ -125,7 +125,7 @@ kill -9 12958 # process-id, the 2nd number
 ## Git commands
 Clone repo:
 ```bash
-https://github.com/khaitheguy/PyHipp.git
+git clone https://github.com/khaitheguy/PyHipp.git
 ```
 
 Configure Git:
