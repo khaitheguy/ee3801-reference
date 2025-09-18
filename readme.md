@@ -3,7 +3,7 @@
 ## Quick Reference
 1. [Create cluster](#parallelcluster)
 2. [Set up conda env](#ec2-shell)
-3. [Slurm commands](#slurm-commands)
+3. [Manage slurm jobs](#slurm-commands)
 4. [Bash commands](#bash-commands)
 
 ## ParallelCluster
@@ -56,6 +56,15 @@ pcluster delete-cluster -n MyCluster01
 ```
 [Back to Top](#quick-reference)
 
+Update compute nodes on the fly:
+
+```bash
+pcluster update-compute-fleet --status STOP_REQUESTED -n MyCluster01
+```
+```bash
+pcluster update-cluster -c ~/cluster-config.yaml -n MyCluster01
+```
+
 ## EC2 Shell
 Activate conda:
 
@@ -87,6 +96,31 @@ cp -r /data/aws ~/.aws
 source /data/src/PyHipp/auto.sh
 ```
 
+Configure AWS:
+```bash
+aws configure
+```
+- Select options
+```bash
+AWS Access Key ID [None]:
+AWS Secret Access Key [None]:
+Default region name [None]: ap-southeast-1
+Default output format [None]: json
+```
+- Get AWS keys:
+```bash
+cat ~/.aws/credentials
+```
+
+Terminate ipython:
+```bash
+ps -ef | grep ipython
+```
+
+```bash
+kill -9 12958 # process-id, the 2nd number
+```
+
 Configure Git:
 
 ```bash
@@ -108,7 +142,18 @@ Check job queue:
 squeue
 ```
 
-Cancel all jobs:
+Cancel jobs:
+- 1 job
+```bash
+scancel 2
+```
+
+- Multiple jobs
+```bash
+scancel {2,3,4}
+```
+
+- All jobs
 ```bash
 scancel --user=ec2-user
 ```
@@ -134,6 +179,11 @@ nvm install 16.9.1
 
 ## General
 ### Bash Commands
+Copy file over SSH:
+```bash
+scp -i ~/MyKeyPair.pem ~/EE3801/PyHipp/slurm.sh ec2-user@xxx:/data/submit.sh
+```
+
 Search through current directory for filename
 ```bash
 find . -name "channel*"
