@@ -5,7 +5,8 @@
 2. [Set up conda env](#ec2-shell)
 3. [Manage slurm jobs](#slurm-commands)
 4. [Check for missing files](#bash-commands)
-5. [Lab links](#links-to-labs)
+5. [Miscellaneous commands](#misc)
+6. [Lab links](#links-to-labs)
 
 ## ParallelCluster
 Edit the cluster configuration:
@@ -209,7 +210,7 @@ srun --pty /bin/bash
 
 [Back to Top](#quick-reference)
 
-## Misc
+## Misc.
 Publish a notification through SNS:
 ```bash
 aws sns publish --topic-arn arn:aws:sns:ap-southeast-1:123456789012:awsnotify --message "Message"
@@ -219,6 +220,12 @@ Fix for Node.js:
 ```bash
 nvm install 16.9.1
 ```
+
+Save snapshot:
+```bash
+./update_snapshot quiz1b2025 2
+```
+
 [Back to Top](#quick-reference)
 
 ## General
@@ -274,8 +281,13 @@ find . -name "firings.mda" | xargs realpath
 - `Tab` Autocomplete filename
 
 ## Links to labs
-- [Lab 1](https://ee3801.github.io/Lab1)
-- [Lab 2](https://ee3801.github.io/Lab2)
-- [Lab 3](https://ee3801.github.io/Lab3)
-- [Lab 4](https://ee3801.github.io/Lab4)
-- [Lab 5](https://ee3801.github.io/Lab5)
+|Lab|Topic|
+|---|-------|
+|[Lab 1](https://ee3801.github.io/Lab1)| AWS setup |
+|[Lab 2](https://ee3801.github.io/Lab2)| Data processing, visualization (matplotlib) |
+|[Lab 3](https://ee3801.github.io/Lab3)| Cluster setup, slurm job management |
+|[Lab 4](https://ee3801.github.io/Lab4)| Git, **parallel processing, data pipeline** |
+|[Lab 5](https://ee3801.github.io/Lab5)| Conda env management, **checking/resubmitting jobs** |
+|[Lab 6](https://ee3801.github.io/Lab6/)| **Generating cumulative plots,** NUS HPC |
+
+[Back to Top](#quick-reference)
